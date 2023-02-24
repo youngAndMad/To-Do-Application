@@ -1,0 +1,270 @@
+.navbar {
+    overflow: hidden;
+    flex-direction: row;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.context{
+    margin-left: 50px;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    flex-direction: row;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+input[type=button]{
+    margin: 17px 0px;
+    border: 2px solid #d5ff5d;
+    padding: 17px;
+    cursor: pointer;
+}
+
+.navbar navbar-header{
+    display: inline-block;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+.date{
+    font-family:Serif;
+    color: black;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin-right: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.button:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+.note{
+    margin-left: 600px;
+    margin-top: -290px;
+    padding: 5px;
+
+}
+.notes_thread{
+    border: 5px double black;
+    padding: 5px;
+}
+
+.button {
+    border: 4px double black;
+    cursor: pointer;
+    width: 100%;
+    background-color: #4CAF50;
+    color: #EAF6F6;
+    margin-left: 0px;
+    display: inline-block;
+    padding: 17px 17px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+tr{
+    font-family: Ebrima;
+    color: black;
+    background: aquamarine;
+}
+
+caption{
+    font-family: 'Oswald', sans-serif;
+    size: 75px;
+    height: 25px;
+    background: aqua;
+    box-shadow: blue;
+}
+
+th, td {
+    padding: 10px;
+}
+table#alter tr:nth-child(even) {
+    background-color: #eee;
+}
+table#alter tr:nth-child(odd) {
+    background-color: #fff;
+}
+table#alter th {
+    color: white;
+    background-color: gray;
+}
+
+
+[type="checkbox"]:checked + .feedback-label {
+    transform: rotate(-90deg) translate(50%, calc((var(--form-width) + 100%) * -1));
+}
+
+[type="checkbox"]:focus + .feedback-label {
+    outline: 2px solid rgb(77, 144, 254);
+}
+
+[type="checkbox"]:checked ~ .form {
+    transform: translate(0, -50%);
+}
+
+.feedback-label,
+.form {
+    transition: all 0.35s ease-in-out;
+}
+
+.feedback-label,
+.form input,
+.form textarea,
+.form button {
+    border-radius: var(--border-radius);
+}
+
+.feedback-label,
+.form button {
+    background: var(--gradient);
+    color: var(--white);
+}
+
+.feedback-label:hover,
+.form button:hover {
+    filter: hue-rotate(-45deg);
+}
+
+.feedback-label {
+    padding: 5px 10px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+form div:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+form div:last-child {
+    text-align: right;
+}
+
+.form input,
+.form textarea {
+    padding: 0 5px;
+    width: 100%;
+}
+
+.form button {
+    padding: 10px 20px;
+    width: 50%;
+    max-width: 120px;
+}
+
+.form input {
+    height: 40px;
+}
+
+.form textarea {
+    height: 220px;
+}
+.feedback-label,
+.form {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    backface-visibility: hidden;
+}
+
+.feedback-label {
+    transform-origin: top right;
+    transform: rotate(-90deg) translate(50%, -100%);
+    z-index: 2;
+}
+
+.form {
+    width: var(--form-width);
+    max-height: 90vh;
+    transform: translate(100%, -50%);
+    padding: 30px;
+    overflow: auto;
+    background: var(--form);
+    z-index: 1;
+}
+[type="checkbox"] {
+    position: absolute;
+    left: -9999px;
+}
+:root {
+    --white: white;
+    --gradient: linear-gradient(-45deg, #FFA600 0%, #FF5E03 50%);
+    --form: #eeefef;
+    --border-radius: 4px;
+    --form-width: 500px;
+    --form-mob-width: 320px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+button,
+label {
+    cursor: pointer;
+}
+
+label {
+    display: block;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    border: none;
+}
+
+textarea {
+    resize: none;
+}

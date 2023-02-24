@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/client_page.css}">
+</head>
+<body>
+<form>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">Options
+            </button>
+            <div class="dropdown-content">
+                <a th:href="@{/auth}">Log out</a>
+            </div>
+        </div>
+    </div>
+    <div class="context">
+        My Day :
+        <ol class="date" id="date">Date</ol>
+    </div>
+    <div class="avatar">
+        <img th:src="@{/images/avatar.jpg}" alt="Avatar" height="250px" width="250px">
+    </div>
+
+    <div class="note">
+        <table>
+            <caption>My notes</caption>
+            <tr>
+                <th>Note</th>
+                <th>Type</th>
+                <th>State</th>
+                <th>Deadline</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            <tbody>
+            <tr th:each="note : ${notes}">
+                <td th:text="${note.getName()}"></td>
+                <td th:switch="${note.noteType}" th:text="${note.getNoteType()}"
+                th:case="'FOR_WORK'"    th:src="@{/images/work.png}"> </td>
+
+                <td th:text="${note.getState()}" th:if="${note.getState()} == TODO" style="color: red"></td>
+                <td th:text="${note.getDeadline()}"></td>
+                <td th:text="${note.getDescription()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+
+<input type="checkbox" id="mycheckbox">
+<label for="mycheckbox" class="feedback-label">Add Note</label>
+<form class="form" th:object="${newNote}" method="post" th:action="@{/note/{id}(id=${client.getId()})}">
+    <div>
+        <label>Note title</label>
+        <input
+                type="text"
+                autocomplete="off"
+                th:field="*{name}"
+                id="title"
+                required>
+    </div>
+    <div>
+        <label>Type</label>
+        <input
+                list="types"
+                required
+                th:field="*{noteType}"
+                autocomplete="off"
+        >
+        <datalist id="types">
+            <option value="FOR_WORK">
+            <option value="FOR_STUDY">
+            <option value="PERSONAL_LIFE">
+            <option value="HOBBY">
+        </datalist>
+    </div>
+    <div>
+        <label>Deadline</label>
+        <input
+                required
+                th:field="*{deadline}"
+                type="date"
+                autocomplete="off"
+                placeholder="deadline">
+    </div>
+    <div>
+        <label>Description</label>
+        <textarea
+                th:field="*{description}"
+                id="description"
+                autocomplete="off"
+                required></textarea>
+    </div>
+    <button type="submit" style="cursor: pointer; background: #4CAF50" >Add note
+    </button>
+</form>
+
+
+<script>
+    const date = new Date();
+    let currentDate = date.getDate().toString() + '-' +(date.getMonth()+1).toString() + '-' + date.getFullYear().toString();
+    let toChange = document.getElementById("date");
+    toChange.textContent = currentDate;
+</script>
+
+</body>
+</html>

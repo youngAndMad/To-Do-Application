@@ -1,0 +1,84 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/registration.css}">
+</head>
+<body>
+<form th:method="POST" th:action="@{/auth}" th:object="${client}">
+    <div class="container">
+        <center>
+            <h1> Registration form</h1>
+        </center>
+        <hr>
+        <label> Firstname </label>
+        <input
+                type="text"
+                name="firstname"
+                placeholder="Firstname"
+                max="30"
+                min="2"
+                required
+                th:field="*{firstName}"
+        />
+
+        <label> Lastname: </label>
+        <input
+                class="form-control"
+                type="text"
+                name="lastname"
+                placeholder="Lastname"
+                maxlength="30"
+                minlength="2"
+                th:field="*{lastname}"
+                required
+        />
+        <div th:field="*{gender}">
+            <label>Gender: </label>
+            <br>
+            <input
+                    type="radio"
+                    value="MALE"
+                    name="gender"
+                    checked>MALE
+            <input type="radio"
+                   value="FEMALE"
+                   name="gender"> FEMALE
+        </div>
+        <div>
+            <label>Age: </label>
+            <input
+                    type="number"
+                    required min="0"
+                    th:field="*{age}">
+        </div>
+
+        <label for="email"><b>Email</b></label>
+        <input id="email"
+               type="text"
+               placeholder="Enter Email"
+               name="email"
+               required th:field="*{email}">
+
+        <label for="psw"><b>Password</b></label>
+        <input id="psw"
+               type="password"
+               placeholder="Enter Password"
+               name="psw" required
+               th:field="*{password}">
+
+        <div th:if="${isRegistered}" >
+            <a class="isRegistered" type="text">This email registered yet</a>
+        </div>
+
+
+        <button type="submit" class="registerbtn">
+            Register
+        </button>
+        <button th:if="${isRegistered}" class="registerbtn">
+            Login
+        </button>
+    </div>
+</form>
+</body>
+</html>
