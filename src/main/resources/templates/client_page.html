@@ -12,15 +12,16 @@
             </button>
             <div class="dropdown-content">
                 <a th:href="@{/auth}">Log out</a>
+                <a th:object="${client}" th:href="@{/client/upload/{id}(id=${client.id})}">Add avatar</a>
             </div>
         </div>
     </div>
     <div class="context">
-        My Day :
+        Date:
         <ol class="date" id="date">Date</ol>
     </div>
-    <div class="avatar">
-        <img th:src="@{/images/avatar.jpg}" alt="Avatar" height="250px" width="250px">
+    <div class="avatar" th:each="img : ${client.getAvatars()}">
+        <img th:src="@{/image/{id}(id=${img.id})}" alt="Avatar" height="200px" width="200px">
     </div>
 
     <div class="note">
@@ -32,17 +33,26 @@
                 <th>State</th>
                 <th>Deadline</th>
                 <th>Description</th>
-                <th>Actions</th>
             </tr>
             <tbody>
             <tr th:each="note : ${notes}">
-                <td th:text="${note.getName()}"></td>
-                <td th:switch="${note.noteType}" th:text="${note.getNoteType()}"
-                th:case="'FOR_WORK'"    th:src="@{/images/work.png}"> </td>
-
-                <td th:text="${note.getState()}" th:if="${note.getState()} == TODO" style="color: red"></td>
+                <td style="" th:text="${note.getName()}"></td>
+                <td th:switch="${note.noteType}">
+                    <img th:case="'FOR_WORK'" class="logo" th:src="@{/images/work.png}">
+                    <img th:case="'FOR_STUDY'" class="logo" th:src="@{/images/study.jpg}">
+                    <img th:case="'HOBBY'" class="logo" th:src="@{/images/hobby.jpeg}">
+                    <img th:case="'PERSONAL_LIFE'" class="logo" th:src="@{/images/life.jpeg}">
+                </td>
+                <td th:switch="${note.state}">
+                    <se th:case="'TODO'" th:text="${note.getState()}" style="color: red"/>
+                    <h5 th:case="'IN_PROCESS'" th:text="${note.getState()}" style="color: yellow"/>
+                    <h5 th:case="'DONE'" th:text="${note.getState()}" style="color: forestgreen"/>
+                </td>
                 <td th:text="${note.getDeadline()}"></td>
                 <td th:text="${note.getDescription()}"></td>
+                <td>
+
+                </td>
             </tr>
             </tbody>
         </table>

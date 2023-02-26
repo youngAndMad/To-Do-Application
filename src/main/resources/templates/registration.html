@@ -17,6 +17,7 @@
                 name="firstname"
                 placeholder="Firstname"
                 max="30"
+                autocomplete="off"
                 min="2"
                 required
                 th:field="*{firstName}"
@@ -27,6 +28,7 @@
                 class="form-control"
                 type="text"
                 name="lastname"
+                autocomplete="off"
                 placeholder="Lastname"
                 maxlength="30"
                 minlength="2"
@@ -58,13 +60,17 @@
                type="text"
                placeholder="Enter Email"
                name="email"
+               autocomplete="off"
+
                required th:field="*{email}">
 
         <label for="psw"><b>Password</b></label>
         <input id="psw"
                type="password"
+               minlength="8"
                placeholder="Enter Password"
-               name="psw" required
+               name="psw"
+               required
                th:field="*{password}">
 
         <div th:if="${isRegistered}" >
